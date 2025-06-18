@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(getLanguage);
 
-app.use('/entities', postRoutes);
+app.use('/entities', postRoutes); //
 
 try {
   const accessLogStream = fs.createWriteStream(path.join(__dirname, '../log/access.log'), {
