@@ -14,6 +14,7 @@ import { errorHandler } from './middleware/errorHandler';
 import { getLanguage } from './middleware/getLanguage';
 import { dbCreateConnection } from './orm/dbCreateConnection';
 import routes from './routes';
+//import postRoutes from './controllers/posts'; // Importing routes for handling posts and attaching them to the '/posts' path
 
 export const app = express();
 app.use(cors());
@@ -21,6 +22,8 @@ app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(getLanguage);
+
+app.use('/entities', postRoutes);
 
 try {
   const accessLogStream = fs.createWriteStream(path.join(__dirname, '../log/access.log'), {
